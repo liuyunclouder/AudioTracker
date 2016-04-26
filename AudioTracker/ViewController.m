@@ -49,7 +49,9 @@
 }
 
 - (void)onSubmit:(UIControl *)btn {
-    [self connectWebSocket];
+    NSString *address = self.textField.text;
+    
+    [self connectWebSocketWithAddr:address];
     
     self.microphone = [EZMicrophone microphoneWithDelegate:self];
     NSArray *inputs = [EZAudioDevice inputDevices];
@@ -65,11 +67,15 @@
 
 #pragma mark - Connection
 
-- (void)connectWebSocket {
+- (void)connectWebSocketWithAddr:(NSString *)addr {
     self.webSocket.delegate = nil;
     self.webSocket = nil;
     
-    NSString *urlString = @"ws://localhost:9001/chat";
+    if ([addr isEqualToString: @""]) {
+        addr = @"ws://localhost:9001/chat";
+    }
+    
+    NSString *urlString = addr;
     SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
     newWebSocket.delegate = self;
     
@@ -84,11 +90,11 @@
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
-    [self connectWebSocket];
+//    [self connectWebSocket];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
-    [self connectWebSocket];
+//    [self connectWebSocket];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
