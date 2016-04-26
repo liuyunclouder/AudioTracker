@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 #import "SRWebSocket.h"
+#import "EZAudio.h"
 
-@interface ViewController ()<SRWebSocketDelegate>
+@interface ViewController ()<SRWebSocketDelegate, EZMicrophoneDelegate>
 @property (nonatomic, retain) UILabel *label_ip_and_port;
 @property (nonatomic, retain) UITextField *textField;
 @property (nonatomic, retain) UIButton *submitBtn;
 @property (nonatomic, retain) SRWebSocket *webSocket;
+@property (nonatomic, strong) EZMicrophone *microphone;
 
 @end
 
@@ -48,7 +50,18 @@
 
 - (void)onSubmit:(UIControl *)btn {
     [self connectWebSocket];
+    
+    self.microphone = [EZMicrophone microphoneWithDelegate:self];
+    NSArray *inputs = [EZAudioDevice inputDevices];
+    [self.microphone setDevice:[inputs lastObject]];
+    
+    [self.microphone startFetchingAudio];
 }
+
+- (void)sendBuffer:(float **)buffer withBufferSize:(UInt32)bufferSize {
+    [self.webSocket send:@(**buffer)];
+}
+
 
 #pragma mark - Connection
 
@@ -56,7 +69,7 @@
     self.webSocket.delegate = nil;
     self.webSocket = nil;
     
-    NSString *urlString = @"ws://localhost:8880/ws";
+    NSString *urlString = @"ws://localhost:9001/chat";
     SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
     newWebSocket.delegate = self;
     
@@ -68,7 +81,6 @@
 
 - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
     self.webSocket = newWebSocket;
-    [self.webSocket send:[NSString stringWithFormat:@"Hello from %@", [UIDevice currentDevice].name]];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
@@ -80,11 +92,27 @@
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
-    
+    NSLog(@"did received data");
 }
 
 - (IBAction)sendMessage:(id)sender {
     
+}
+
+#pragma mark - EZAudio
+-(void)microphone:(EZMicrophone *)microphone
+    hasAudioReceived:(float **)buffer
+      withBufferSize:(UInt32)bufferSize
+withNumberOfChannels:(UInt32)numberOfChannels
+{
+    __weak typeof (self) weakSelf = self;
+    // Getting audio data as an array of float buffer arrays that can be fed into the
+    // EZAudioPlot, EZAudioPlotGL, or whatever visualization you would like to do with
+    // the microphone data.
+    dispatch_async(dispatch_get_main_queue(),^{
+        // Visualize this data brah, buffer[0] = left channel, buffer[1] = right channel
+        [weakSelf sendBuffer:buffer withBufferSize:bufferSize];
+    });
 }
 
 
