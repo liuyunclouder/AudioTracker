@@ -13,6 +13,7 @@
 		0044411E1CCDF27800D71096 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0044411C1CCDF27800D71096 /* Main.storyboard */; };
 		004441201CCDF27800D71096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0044411F1CCDF27800D71096 /* Assets.xcassets */; };
 		004441231CCDF27800D71096 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 004441211CCDF27800D71096 /* LaunchScreen.storyboard */; };
+		8599D611BEC7D7AB68602955 /* libPods-AudioTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6AD9D62A61FD51DAAC9A61 /* libPods-AudioTracker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		0044411F1CCDF27800D71096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		004441221CCDF27800D71096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		004441241CCDF27800D71096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F6AD9D62A61FD51DAAC9A61 /* libPods-AudioTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AudioTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6CD33B77547A4BF60B4092A /* Pods-AudioTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioTracker/Pods-AudioTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		B2338431A1056FB9D3E10FDE /* Pods-AudioTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioTracker/Pods-AudioTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8599D611BEC7D7AB68602955 /* libPods-AudioTracker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				004441121CCDF27800D71096 /* AudioTracker */,
 				004441111CCDF27800D71096 /* Products */,
+				B6CA2068C7FC32A66E2160B6 /* Pods */,
+				6687F5D69740321FB718B12F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +86,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6687F5D69740321FB718B12F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F6AD9D62A61FD51DAAC9A61 /* libPods-AudioTracker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6CA2068C7FC32A66E2160B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A6CD33B77547A4BF60B4092A /* Pods-AudioTracker.debug.xcconfig */,
+				B2338431A1056FB9D3E10FDE /* Pods-AudioTracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 004441271CCDF27800D71096 /* Build configuration list for PBXNativeTarget "AudioTracker" */;
 			buildPhases = (
+				71B9545BFF1E506527783A43 /* Check Pods Manifest.lock */,
 				0044410C1CCDF27800D71096 /* Sources */,
 				0044410D1CCDF27800D71096 /* Frameworks */,
 				0044410E1CCDF27800D71096 /* Resources */,
+				C0CD97D67B84FAAF7F9620E1 /* Embed Pods Frameworks */,
+				3E8074BD3640044FE2978AB8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -110,6 +137,7 @@
 				TargetAttributes = {
 					0044410F1CCDF27800D71096 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = BW53AW8KUE;
 					};
 				};
 			};
@@ -143,6 +171,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E8074BD3640044FE2978AB8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioTracker/Pods-AudioTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71B9545BFF1E506527783A43 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C0CD97D67B84FAAF7F9620E1 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioTracker/Pods-AudioTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0044410C1CCDF27800D71096 /* Sources */ = {
@@ -261,23 +337,33 @@
 		};
 		004441281CCDF27800D71096 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6CD33B77547A4BF60B4092A /* Pods-AudioTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AudioTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.lingwu.AudioTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		004441291CCDF27800D71096 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2338431A1056FB9D3E10FDE /* Pods-AudioTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AudioTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.lingwu.AudioTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -300,6 +386,7 @@
 				004441291CCDF27800D71096 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
